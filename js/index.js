@@ -1,77 +1,38 @@
+const carrito = []
 
-function planPagos() {
-    console.log('Mostrar plan de pagos')
-    for (let i = 2; i <= 12; i++) {
-        console.log( i + ' cuotas sin interés.')
-    }
+const Prendas = [
+{ nombre: "camisa blanca", codigo: 1, precio: 5000 },
+{ nombre: "camisa azul", codigo: 2, precio: 4500 },
+{ nombre: "remera mangas corta", codigo: 3, precio: 2000 },
+{ nombre: "remera mangas largas", codigo: 4, precio: 2200 },
+{ nombre: "pantalon corto", codigo: 5, precio: 2500 },
+{ nombre: "pantalon largo", codigo: 6, precio: 3500 },
+{ nombre: "vestido de fiesta", codigo: 7, precio: 7900 },
+{ nombre: "traje de gala", codigo: 8, precio: 9000 },
+{ nombre: "buzo canguro", codigo: 9, precio: 7500 },
+{ nombre: "campera rustica", codigo: 10, precio: 8000 },
+
+]
+
+function BuscarPrenda(codigo) {
+    let resultado = Prendas.find((prenda) => prenda.codigo === parseInt(codigo))
+    return resultado
 }
 
-function mostrarCatalogo(catalogo) {
-    switch (catalogo) {
-        case "1":
-            console.warn("Remeras: azules, rojas, amarillas, verdes")
-            break;
-        case "2":
-            console.warn("largos, cortos")
-            break;
-        case "3":
-            console.warn("con capucha, sin capucha")
-            break;
-        case "4":
-            console.warn("abrigadas, simples")
-            break;
-        case "5":
-            console.warn("cintos, bolsos")
-            break;
-
-        default:
-            console.warn("por favor, seleccione un numero")
-            break;
-    }
-}
-
-function preciosPorPrenda(precio) {
-    switch (precio) {
-        case "1":
-            console.warn("Remeras: $2000")
-            break;
-        case "2":
-            console.warn("Largos: $5000 Cortos:$3000")
-            break;
-        case "3":
-            console.warn("Con capucha: $4500 Sin Capucha: $3500")
-            break;
-        case "4":
-            console.warn("Abrigadas: $7000 Simples: $5000")
-            break;
-        case "5":
-            console.warn("Cintos: $2500 Bolsos: $6000")
-            break;
-
-        default:
-            console.warn("por favor, seleccione un numero")
-            break;
-    }
-}
-
-
-function mostrarPrendas() {
-    let respuesta = confirm('mostrar prendas')
-    if (respuesta === true) {
-        let catalogo = prompt('Ingresa un numero segun la prenda a ver:')
-        mostrarCatalogo(catalogo)
+function Comprar() {
+    let codigo = prompt("ingresar el codigo de la prenda")
+    let PrendaElegida = BuscarPrenda(codigo)
+    if (PrendaElegida !== undefined) {
+        carrito.push(PrendaElegida)
+        alert((PrendaElegida.nombre) + " se agrego al carrito.")
+        let respuesta = confirm("¿deseas agregar otra prenda?")
+        if (respuesta === true) {
+            Comprar()
+        } else { 
+            console.table(carrito)
+            console.log("gracias por su compra")
+        }
     } else {
-        console.warn('muchas gracias, vuelve pronto!')
-    }
-}
-
-function mostrarPrecios() {
-    let respuesta = confirm("Mostrar Precios")
-    if (respuesta === true) {
-        let precio = prompt("ingrese un numero según la prenda a ver:")
-        preciosPorPrenda(precio)
-        planPagos()
-    } else {
-        console.warn("muchas gracias, vuelva pronto!")
+        alert("Muchas gracias, vuelva pronto")
     }
 }
