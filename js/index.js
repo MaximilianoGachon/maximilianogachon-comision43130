@@ -1,6 +1,6 @@
 const carrito = []
 
-const Prendas = [
+const Catalogodeprendas = [
     { codigo: 1, nombre: "camisa blanca", precio: 5000 },
     { codigo: 2, nombre: "camisa azul", precio: 4500 },
     { codigo: 3, nombre: "remera mangas corta", precio: 2000 },
@@ -39,10 +39,10 @@ function CargarPrendas(array) {
 
 InputBuscar.addEventListener("search", () => {
     if (InputBuscar.value.trim() !== "") {
-        let resultado = Prendas.filter((prenda) => producto.nombre.toLowerCase().includes(InputBuscar.value.trim().toLowerCase()))
-    console.table("resultado")
-}
-    
+        let arrayresultado = Catalogodeprendas.filter((producto)=> producto.nombre.toLowerCase().includes(inputBuscar.value.trim().toLowerCase()))
+        CargarPrendas(arrayresultado)
+    }
+
 })
 
 
