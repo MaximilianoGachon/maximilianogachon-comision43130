@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Bitter:ital@1&family=Montserrat:wght@300&display=swap');
 
 * {
-    margin: 0px;
+    margin: auto;
     padding: 0px;
     box-sizing: border-box;
     font-family: 'Bitter', serif;
@@ -35,6 +35,35 @@ li {
 
 p {
     text-align: center;
-    padding-top: 35px;
-    background-color: aquamarine
+    margin-bottom: 15px;
+    background-color: aquamarine;
+    
 } 
+
+.mensajes {
+    font-size: large;
+    background-color: yellow;
+}
+
+#input-buscar {
+    font-size: large;
+    width: 700px;
+    margin-top: 30px;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+table{
+    width: 800px;
+}
+
+th {
+    text-align: center;
+    padding: 15px;
+}
+
+td {
+    text-align: center;
+    padding: 15px;
+}

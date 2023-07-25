@@ -10,25 +10,35 @@
 </head>
 
 <body>
-    <h1 class="title">Segunda pre-entrega JavasCript, Maximiliano Gachón, comision 43130</h1>
+    <h1 class="title">Tercera pre-entrega JavasCript, Maximiliano Gachón, comision 43130</h1>
 
 
     <h2 class="title">Tienda online</h2>
-    <div>
-        <ol>
-            <li>camisa blanca</li>
-            <li>camisa azul</li>
-            <li>remera mangas corta</li>
-            <li>remera mangas largas</li>
-            <li>pantalon corto</li>
-            <li>pantalon largo</li>
-            <li>vestido de fiesta</li>
-            <li>traje de gala</li>
-            <li>buzo canguro</li>
-            <li>campera rustica</li>
 
-        </ol>
+    <input type="search" id="input-buscar" placeholder="Buscador">
+
+    <div>
+        <p class="mensajes">ACA SE VAN A MOSTAR MENSAJES</p>
     </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Codigo</th>
+                <th>Nombre</th>
+                <th>precio</th>
+                <th>Añardir a carrito</th>
+            </tr>
+        </thead>
+
+        <tbody id="tabla-productos">
+            <tr>
+                <td class="codigo-producto">1</td>
+                <td class="nombre-producto">nombre</td>
+                <td class="precio-producto">precio</td>
+                <td id="" class="button"><button class="button-carrito">Añadir a carrito</button></td>
+            </tr>
+        </tbody>
+    </table>
 
     <p>Ejecuta <b>DevTools</b>, y escribe en la consola JS la función: <b>Comprar()</b>
 
