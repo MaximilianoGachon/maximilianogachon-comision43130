@@ -1,4 +1,4 @@
-const carrito = []
+const carrito = RecuperarCarrito()
 
 const Catalogodeprendas = [
     { codigo: 1, nombre: "camisa blanca", precio: 5000 },
@@ -13,62 +13,65 @@ const Catalogodeprendas = [
     { codigo: 10, nombre: "campera rustica", precio: 8000 },
 ]
 
+function GuardarenCarrito() {
+    if (carrito > 0) {
+        localStorage.getItem("carrito", JSON.stringify(carrito))
+    }
+}
+
+function RecuperarCarrito() {
+    if (localStorage.getItem("carrito")) {
+        return JSON.parse(localStorage.getItem("carrito"))
+    } else {
+        return []
+    }
+}
+
 const TablaProductos = document.querySelector("tbody#tabla-productos")
 const InputBuscar = document.querySelector("#input-buscar")
 const Mensaje = document.querySelector(".mensajes")
 
-function CrearTablaProducto(prenda) {
-    `<tr>
-    <td class="codigo-producto">${producto.codigo}</td>
-    <td class="nombre-producto">${producto.nombre}</td>
-    <td class="precio-producto">$ ${producto.precio}</td>
-    <td id="${producto.codigo}" class="button"><button class="button-carrito">Añadir a carrito</button></td>
-</tr>`
+
+
+function CrearTablaProducto(producto) {
+    return `<tr>
+                <td class="codigo-producto">${producto.codigo}</td>
+                <td class="nombre-producto">${producto.nombre}</td>
+                <td class="precio-producto">$ ${producto.precio}</td>
+                <td id="${producto.codigo}"><button class="button-carrito">Añadir a carrito</button></td>
+            </tr>`
 }
 
-function CargarPrendas(array) {
-    TablaProductos.innerHTML = ""
-    if (array.lengt > 0) {
-        array.forEach((prenda) => {
-            TablaProductos.innerHTML += CrearTablaProducto(prenda)
+function ActivarBotones() {
+    const botones = document.querySelectorAll("button.button-carrito")
+    botones.forEach((boton)=> {
+        boton.addEventListener("click", ()=> {
+           let producto = Catalogodeprendas.find((producto)=> producto.codigo === parseInt(boton.codigo))
+           carrito.push(producto)
+           Mensaje.textContent = producto + "Se agrego a tu carrito"
+           GuardarenCarrito()
         })
+    }
+    )
+    
+}
+function cargarPrendas(array) {
+    TablaProductos.innerHTML = ""
+    if (array.length > 0) {
+        array.forEach((producto) => TablaProductos.innerHTML += CrearTablaProducto(producto))
+        ActivarBotones()
     } else {
-        Mensaje.textContent = "no hay prendas para cargar"
+        Mensaje.textContent = "No hay productos para cargar."
     }
 }
 
 InputBuscar.addEventListener("search", () => {
     if (InputBuscar.value.trim() !== "") {
-        let arrayresultado = Catalogodeprendas.filter((producto)=> producto.nombre.toLowerCase().includes(inputBuscar.value.trim().toLowerCase()))
-        CargarPrendas(arrayresultado)
+        let resultado = Catalogodeprendas.filter((producto) => producto.nombre.toLowerCase().includes(InputBuscar.value.trim().toLowerCase()))
+        cargarPrendas(resultado)
     }
-
 })
 
-
-/*
-CargarPrendas(Prendas)
-
-function BuscarPrenda(codigo) {
-    let resultado = Prendas.find((prenda) => prenda.codigo === parseInt(codigo))
-    return resultado
-}
+cargarPrendas(Catalogodeprendas)
 
 
-function Comprar() {
-    let codigo = prompt("ingresar el codigo de la prenda")
-    let PrendaElegida = BuscarPrenda(codigo)
-    if (PrendaElegida !== undefined) {
-        carrito.push(PrendaElegida)
-        alert((PrendaElegida.nombre) + " se agrego al carrito.")
-        let respuesta = confirm("¿deseas agregar otra prenda?")
-        if (respuesta === true) {
-            Comprar()
-        } else {
-            console.table(carrito)
-            console.log("gracias por su compra")
-        }
-    } else {
-        alert("Muchas gracias, vuelva pronto")
-    }
-} */
