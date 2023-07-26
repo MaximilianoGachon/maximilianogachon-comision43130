@@ -38,21 +38,22 @@ function CrearTablaProducto(producto) {
                 <td class="codigo-producto">${producto.codigo}</td>
                 <td class="nombre-producto">${producto.nombre}</td>
                 <td class="precio-producto">$ ${producto.precio}</td>
-                <td id="${producto.codigo}"><button class="button-carrito">Añadir a carrito</button></td>
-            </tr>`
+                <td><button id="${producto.codigo}" class="button button-outline button-big-emoji">Añadir a carrito</button></td>
+                </tr>`
 }
 
 function ActivarBotones() {
-    const botones = document.querySelectorAll("button.button-carrito")
+    const botones = document.querySelectorAll(".button.button-outline.button-big-emoji")
     botones.forEach((boton)=> {
         boton.addEventListener("click", ()=> {
            let producto = Catalogodeprendas.find((producto)=> producto.codigo === parseInt(boton.codigo))
            carrito.push(producto)
-           Mensaje.textContent = producto + "Se agrego a tu carrito"
+           Mensaje.textContent = "Un producto se agrego a tu carrito: " + producto  
            GuardarenCarrito()
-        })
-    }
-    )
+           Comprar()
+           
+        }) 
+    })
     
 }
 function cargarPrendas(array) {
@@ -75,3 +76,33 @@ InputBuscar.addEventListener("search", () => {
 cargarPrendas(Catalogodeprendas)
 
 
+function Comprar() {
+    confirm("desea compprar el/los productos")
+    if (confirm === true) {
+        let resultado = prompt("ingrese el codigo de la prenda a comprar")
+        carrito.shift(resultado) 
+        Mensaje.textContent = "Compraste un producto" + resultado    
+    } else {
+        Mensaje.textContent = "vuelva pronto"
+    }
+    
+    }
+
+/*
+function Comprar() {
+    let codigo = prompt("ingresar el codigo de la prenda")
+    let PrendaElegida = BuscarPrenda(codigo)
+    if (PrendaElegida !== undefined) {
+        carrito.push(PrendaElegida)
+        alert((PrendaElegida.nombre) + " se agrego al carrito.")
+        let respuesta = confirm("¿deseas agregar otra prenda?")
+        if (respuesta === true) {
+            Comprar()
+        } else {
+            console.table(carrito)
+            console.log("gracias por su compra")
+        }
+    } else {
+        alert("Muchas gracias, vuelva pronto")
+    }
+} */
