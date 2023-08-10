@@ -35,7 +35,7 @@ li {
 
 p {
     text-align: center;
-    margin-bottom: 15px;
+    margin: 15px;
     background-color: aquamarine;
     
 } 
@@ -71,4 +71,22 @@ th {
 td {
     text-align: center;
     padding: 15px;
+}
+
+.button-carrito {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.button-comprar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.carrito-vacio {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }

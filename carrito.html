@@ -7,42 +7,37 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="js/catalogo.js"></script>
-    <script defer src="js/index.js"></script>
     <script src="js/global.js"></script>
-    
+    <script defer src="js/carrito.js"></script>
     <title>Comision 43130</title>
 </head>
 
 <body>
     <h1 class="title">Tercera pre-entrega JavasCript, Maximiliano Gachón, comision 43130</h1>
 
-    <h2 class="title">Tienda online</h2>
-
-    <input type="search" id="input-buscar" placeholder="Buscador">
+    <h2 class="title">Mi carrito</h2>
 
     <div class="mensajes">
-        
+
     </div>
-    <table>
+    <table class="section-productos">
         <thead>
             <tr>
                 <th>Codigo</th>
                 <th>Nombre</th>
                 <th>Precio</th>
-                <th>Añardir a carrito</th>
+                <th>Eliminar</th>
             </tr>
         </thead>
 
-        <tbody id="tabla-productos">
-           
+        <tbody id="tabla-carrito">
+
         </tbody>
     </table>
 
-    <a href="carrito.html"><button class="button-carrito"> Ir a carrito </button></a>
+    <button class="button-comprar">Comprar</button>
 
-    <p>Utilizar el buscador para obtener la prenda a eleccion</p>
-    <p>Usar el boton añadir a carrito para selecionar una prenda</p>
-    <p>En DevTools ejecutar la funcion <b>RecuperarCarrito()</b> para recuperar productos en carrito</p>
+    <a href="index.html"><button class="button-carrito"> Seguir comprando </button></a>
 
 </body>
 
