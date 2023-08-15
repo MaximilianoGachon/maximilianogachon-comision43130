@@ -22,7 +22,7 @@ function MostrarProductosenCarrito() {
 
 
 function BotonEliminar() {
-    const BotonEliminar = document.querySelectorAll("button.button-eliminar")
+    const BotonEliminar = document.querySelectorAll(".button-eliminar")
     BotonEliminar.forEach((boton) => {
         boton.addEventListener("click", () => {
             let codigo = parseInt(boton.codigo)

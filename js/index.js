@@ -20,8 +20,12 @@ function ActivarBotonesAñadir() {
         boton.addEventListener("click", () => {
             let producto = Catalogodeprendas.find((producto) => producto.codigo === parseInt(boton.id))
             carrito.push(producto)
-            Mensaje.textContent = "Se agregó un producto al carrito: " + producto.nombre
-            GuardarenCarrito()
+            setTimeout(() => {
+                Mensaje.textContent = "Se agregó un producto al carrito: " + producto.nombre
+                GuardarenCarrito()
+            }, 1500);
+            
+            
         })
     })
 
